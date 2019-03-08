@@ -1,0 +1,30 @@
+/*国家样式*/
+.country_ul{margin: 15px 0 15px;}
+.country_ul li{display: inline-block; padding: 5px; line-height: 25px;}
+.country_ul li a{color: #000000;}
+
+/*下载图片*/
+.down_div{margin-bottom: -5px;}
+.down_img{width: 50%;text-align: center;}
+.notice_tit{width: 6%;padding: 10px;text-align: center;color: #f43430;}
+.notice_img{width: 50px; margin-left: -12px;}
+.notice_con{font-size: 14px; line-height: 24px;margin-left: 15px;}
+
+/*联系我们*/
+.relation_div{font-size: 14px;}
+.rel_num{width: 30%;}
+.rel_lable{display: inline; font-size: 15px;}
+
+/*反馈建议*/
+.taxtarea_tit{ padding: 14px 15px 0px;color: #999999;font-size: 13px;position: relative;margin-bottom: -10px;}
+/*提交按钮*/
+.btn_area{width: 60%;margin-left: 50px;}
+
+/*评论*/
+.leave_nm{font-size: 13px; color: #888;}
+.leave_img{padding-right: 5px;}
+.comment_tit{padding-bottom: 5px;}
+.comment_cen{padding-bottom: 15px; padding-left: 18px;}
+
+ /*下载按钮*/
+ .down_btn{text-align: left; background: #F5F5F5; border: 0; color: #000;font-size: 15px;}

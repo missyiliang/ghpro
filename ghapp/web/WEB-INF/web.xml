@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name></display-name>
+	<!-- <listener> <listener-class>com.task.TimerListener</listener-class> 
+		</listener> -->
+
+	<!-- 办理通知servlet -->
+	<servlet>
+		<servlet-name>TipsServlet</servlet-name>
+		<servlet-class>com.servlet.TipsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>TipsServlet</servlet-name>
+		<url-pattern>/servlet/tipsServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 办理通知删除servlet -->
+	<servlet>
+		<servlet-name>DelTipsServlet</servlet-name>
+		<servlet-class>com.servlet.DelTipsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DelTipsServlet</servlet-name>
+		<url-pattern>/servlet/delTipsServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 经费申请查询servlet -->
+	<servlet>
+		<servlet-name>OutlayQueryServlet</servlet-name>
+		<servlet-class>com.servlet.OutlayQueryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>OutlayQueryServlet</servlet-name>
+		<url-pattern>/servlet/outlayQueryServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 经费申请详情servlet -->
+	<servlet>
+		<servlet-name>OutlayInfoServlet</servlet-name>
+		<servlet-class>com.servlet.OutlayInfoServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>OutlayInfoServlet</servlet-name>
+		<url-pattern>/servlet/outlayInfoServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 爱心工程查询servlet -->
+	<servlet>
+		<servlet-name>LoveQueryServlet</servlet-name>
+		<servlet-class>com.servlet.LoveQueryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoveQueryServlet</servlet-name>
+		<url-pattern>/servlet/loveQueryServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 爱心工程详情servlet -->
+	<servlet>
+		<servlet-name>LoveInfoServlet</servlet-name>
+		<servlet-class>com.servlet.LoveInfoServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoveInfoServlet</servlet-name>
+		<url-pattern>/servlet/loveInfoServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 待办列表servlet -->
+	<servlet>
+		<servlet-name>WaitServlet</servlet-name>
+		<servlet-class>com.servlet.WaitServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>WaitServlet</servlet-name>
+		<url-pattern>/servlet/waitServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- <servlet>
+		<servlet-name>queryWriteServlet</servlet-name>
+		<servlet-class>com.servlet.queryWriteServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>queryWriteServlet</servlet-name>
+		<url-pattern>/servlet/queryWriteServlet</url-pattern>
+	</servlet-mapping> -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

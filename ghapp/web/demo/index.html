@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>签证信息服务</title>
+    <link rel="stylesheet" href="css/weui.css"/>
+    <link rel="stylesheet" href="css/example.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="weui_search_bar" id="search_bar">
+    <form class="weui_search_outer">
+        <div class="weui_search_inner">
+            <i class="weui_icon_search"></i>
+            <input type="search" class="weui_search_input" id="search_input" placeholder="请输入关键字" required/>
+            <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+        </div>
+    </form>
+</div>
+<div class="bd">
+    <div class="weui_tab">
+        <div class="weui_navbar" id="navbar">
+            
+        </div>
+        <div class="weui_tab_bd">
+            <div class="weui_cell">
+				<ul class="country_ul" id="country_ul">
+	            	
+	            </ul>
+        	</div>
+        </div>
+    </div>
+</div>
+<div class="bd">
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_cell down_div">
+            <div class="weui_cell_bd down_img"  style="margin-right: 10px;">
+                <a href="#"><img src="images/66.png"></a>
+            </div>
+            <div class="weui_cell_bd down_img">
+                <a href="./download.html"><img src="images/55.png"></a>
+            </div>
+        </div>
+    </div>
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_cell">
+            <div class="weui_cell_bd notice_tit">
+                签证知识必读
+                <div class="notice_img">
+                    <img src="images/notice_01.png">
+                </div>
+            </div>
+            
+            <div class="weui_cell_bd notice_con" id="visaknowledge">
+            </div>
+
+        </div>
+    </div>
+    <div class="weui_panel weui_panel_access">
+            <div class="weui_panel_hd">联系我们</div>
+            <div class="weui_panel_bd">
+                <div class="weui_cell relation_div">
+                <div class="weui_cell_hd rel_num"><label class="weui_label rel_lable">咨询服务电话：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>68508071（护照、签证业务）</p>
+                        <p>68500022（出访任务审批及其它业务）</p>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_panel_bd">
+                <div class="weui_cell relation_div">
+                <div class="weui_cell_hd rel_num"><label class="weui_label rel_lable">办  公  地  点：</label></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>中央广播电视总台（复兴路办公区）方楼一楼A113房间</p>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_panel_bd">
+                <div class="weui_cell relation_div">
+                <div class="weui_cell_hd rel_num"><label class="weui_label rel_lable">具  体  位  置：</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>方楼一楼电梯间南侧，“记者间”对面的过道里，门口挂牌“护照管理科”</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_panel_hd">反馈与建议</div>
+        <div class="weui_panel_bd">
+            <div class="weui_cell ">
+                <div class=" weui_cell_primary">
+                    <textarea class="weui_textarea" id="commentText"  placeholder="请输入评论" rows="3" maxlength="200"></textarea>
+                    <div class="weui_textarea_counter"><span id="wordNum">0</span>/200</div>
+                   
+                </div>
+            </div>
+            <div class="weui_cell">
+                 <div class="weui_cell_hd" id="praise"><label class="weui_label rel_lable">👍</label></div>
+                <div class="button_sp_area btn_area" id="comment">
+                    <a href="javascript:void(0)" class="weui_btn weui_btn_primary">提交</a>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="weui_panel weui_panel_access">
+        <div class="weui_panel_bd ">
+            <div class="weui_cell relation_div">
+                <div class="weui_cell_bd weui_cell_primary" id="commentList">
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

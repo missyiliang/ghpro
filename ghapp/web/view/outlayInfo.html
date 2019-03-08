@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+    <title>活动详情</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link href="../favicon.ico" rel="shortcut icon" > 
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.1" rel="stylesheet">
+    <link href="../css/ghMod_style.css?v=1.1.1" rel="stylesheet">
+
+<style type="text/css">
+   .table > thead > tr > th, 
+   .table > tbody > tr > th, 
+   .table > tfoot > tr > th, 
+   .table > thead > tr > td, 
+   .table > tbody > tr > td, 
+   .table > tfoot > tr > td{
+   	  text-align:center;
+   }
+   
+   #vertical-timeline::before{width: 2px;left: 25%;}
+   .vertical-timeline-icon{left: 22%;}
+   .vertical-timeline-content{margin-left: 25%;padding: 1em;}
+   /* .c{overflow: auto;zoom:1;} */
+   .vertical-timeline-tim{float: left;width: 30%;}
+   .vertical-timeline-ic{float: left;}
+   .vertical-timeline-con{float: left; width: 66%;margin-left:2%;font-weight: 500;}
+</style> 
+
+</head>
+
+<body class="gray-bg" style="font-size:14px;">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-xs-12">
+            	
+            	<span id="first">
+            		<!-- 活动的请示-->
+            	</span>
+                
+                <span id="second">
+               	  	<!-- 审批进度 -->
+                </span>
+              
+                <span id="third">
+                	<!-- 活动基本信息 -->
+                </span>
+               
+                <span id="outlayType">
+                	<!-- 经费类别 -->
+                </span>
+                
+                <span id="payType">
+                	<!-- 支付方式 -->
+                </span>
+                
+                <span id="sixth">
+                	<!-- 涵盖-->
+                </span>
+                
+                <span id="seventh">
+                	<!-- 请示 -->
+                </span>
+                
+                <span id="eighth">
+                	<!-- 预算 -->
+                </span>
+               
+				<span id="ninth">
+				 <!-- 汇款单 -->
+				</span>
+               
+                
+                
+                <span id="tenth">
+                	<!-- 附件信息 
+	                <div class="ibox float-e-margins">
+	                    <div class="ibox-title">
+	                        <i class="fa fa-tag"></i>
+	                        <h5>附件信息</h5>
+	                    </div>
+	                    <div class="ibox-content">
+	                        
+	                        <div class="form-group">
+	                        	<p>请登录电脑进行查看</p>
+	                            <p><a href="">合同文件1.png</a></p>
+	                            <p><a href="">合同文件2.png</a></p>
+	                        </div>
+	                    </div>
+	                </div> -->
+                </span>
+                
+
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- 全局js -->
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../js/content.js?v=1.0.0"></script> 
+
+    <!-- iCheck -->
+    <script src="../js/plugins/iCheck/icheck.min.js"></script>
+    
+   	<script type="text/javascript" src="js/outlayInfo.js"></script> 
+    
+    <script>
+        $(document).ready(function () {
+
+            var deviceWidth=$(window).outerWidth();
+
+             if(deviceWidth>640){
+
+                 $("html").css("font-size","100px");            
+
+             }else{
+
+                 $("html").css("font-size",deviceWidth/640*100+'px');     
+
+             }
+			
+            /*  $('.i-checks').iCheck({
+                 checkboxClass: 'icheckbox_square-green',
+                 radioClass: 'iradio_square-green',
+             }); */
+            
+        });
+    </script>
+    <!-- table -->
+     <script type="text/javascript">
+         $(document).ready(function() {
+             var rightPart = $('div.x_auto_box tr');
+             var leftPart = $('div.lock_box tr');
+             for (var i = 0; i < rightPart.length; i++) {
+                     var rightHeight = rightPart.eq(i).find('td:first').height();
+                     var leftHeight = leftPart.eq(i).find('td:first').height();
+                     if(leftHeight > rightHeight){
+                         rightPart.eq(i).find('td:first').height(leftHeight+1);
+                     } else {
+                         leftPart.eq(i).find('td:first').height(rightHeight+1);
+                     }
+             }
+
+             
+         });
+
+         function showjdVoid(){
+            
+            $("#btnjd").css("display","none");
+    
+            $("#showjd").css("display","block");
+         }
+         
+         
+         function showhkVoid(){
+        	 
+        	 $("#btnhk").css("display","none");
+        	    
+             $("#showhk").css("display","block");
+         }
+          </script> 
+    
+    
+
+</body>
+
+</html>

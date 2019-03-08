@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+
+    <title>待办列表</title>
+
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../css/ghMod_style.css" rel="stylesheet">
+   <style>
+   	h4,h5{font-weight: 700;}
+   	/* 未读前加红点样式 */
+   	.ibox-content{overflow: auto; zoom: 1;}
+   	.rot-lef{width: 3%;float: left;margin: -5px 4px 0 -15px;}
+   	.rot-rig{width: 97%;float: left;}
+   </style>
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="content_panel col-xs-12" style="margin-bottom: 45px;" id="wlistdiv">
+                <!-- 内容start -->
+              	
+                <!-- 内容end -->
+                <div class="weui_panel_bd"></div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- 底部导航start -->
+    <div class="weui_tab tab-bottom" >
+        <div class="weui_tabbar ">
+            <a href="javascript:tabbtn('waitList.html');" class="weui_tabbar_item weui_bar_item_on">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-pencil-square-o"></i>
+                </div>
+                <p class="weui_tabbar_label">待办(<font color="red" id="readcount"></font>)</p>
+            </a>
+            <a href="javascript:tabbtn('tipsList.html');" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-bell-o"></i>
+                </div>
+                <p class="weui_tabbar_label">提醒(<font color="red" id="tipcount"></font>)</p>
+            </a>
+            <a href="javascript:tabbtn('outlayList.html');" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-search"></i>
+                </div>
+                <p class="weui_tabbar_label">活动查询</p>
+            </a>
+            <a href="javascript:tabbtn('loveList.html');" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-heart-o"></i>
+                </div>
+                <p class="weui_tabbar_label">爱心工程</p>
+            </a>
+                           
+        </div>
+    </div>
+    <!-- 底部导航end -->
+
+    <!-- 全局js -->
+    <!-- <script src="../js/jquery.min.js?v=2.1.4"></script> -->
+    <!-- <script src="../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script> -->
+
+    <!-- 自定义js -->
+    <script src="../js/content.js?v=1.0.0"></script>
+    <!-- 下拉加载 -->
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/updown.js"></script>
+<script>
+$(function(){
+	var pagenum = -1;
+	//页数 
+    var page = 0;
+    // 每页展示10个
+    var size =10;
+
+    $('.content_panel').dropload({
+
+        scrollArea : window,
+        autoLoad : true,//自动加载
+        domDown : {//上拉
+            domClass   : 'dropload-down',
+            domRefresh : '<div class="dropload-refresh f15 "><i class="icon icon-20"></i>上拉加载更多</div>',
+            domLoad    : '<div class="dropload-load f15"><span class="weui-loading"></span>正在加载中...</div>',
+            domNoData  : '</br><div class="dropload-noData" style="text-align:center">暂无待办信息!</div>'
+        },
+        domUp : {//下拉
+            domClass   : 'dropload-up',
+            domRefresh : '<div class="dropload-refresh"><i class="icon icon-114"></i>上拉加载更多</div>',
+            domUpdate  : '<div class="dropload-load f15"><i class="icon icon-20"></i>释放更新...</div>',
+            domLoad    : '<div class="dropload-load f15"><span class="weui-loading"></span>正在加载中...</div>'
+        },
+        loadUpFn : function(me){//刷新
+            //加载更多
+         page = 0;
+         pagenum = 0;
+         window.history.pushState(null, document.title, window.location.href);
+         var result = '';
+         
+            $.ajax({
+                type: 'GET',
+                url:'../servlet/waitServlet?pagenum='+pagenum,
+                dataType: 'json',
+                success: function(data){
+                $("#tipcount").html(data.tipcount);
+                $("#readcount").html(data.readcount);
+                
+                var arrLen = data.wlist.length;
+                    if(arrLen > 0){
+                    	//me
+                       var str = "";
+						$.each(data.wlist,function(i,val){
+							var styleName="weui_navbar_item";
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							var wfid = "";
+							if(val.workFlowId != null && val.workFlowId == '8' || val.workFlowId == '7'){
+								wfid = "outlayInfo.html?inid="+val.instanceId;
+							}
+							if(val.workFlowId != null && val.workFlowId == '9'){
+								wfid = "loveInfo.html?inid="+val.instanceId;
+							}
+							str += "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"
+									+"<div class=\"ibox float-e-margins\">"
+									+ "<a href=\""+wfid+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">";
+									if(val.readStatus == 0){
+										str += "<div class=\"rot-lef\" ><img src=\"../img/reddot.png\" style=\"width: 30px;height: 30px;\"></div>";
+									}
+									
+									str += "<div class=\"rot-rig\" >"
+									+ "<h4>" + val.title + "</h4>"
+									+ "<div>"
+									+ "<span>&nbsp;&nbsp;申请时间:" + val.applyTime + "</span>"
+									+ "</div>"
+									+ "<div class=\"form-group\">"
+									+ "<span>&nbsp;&nbsp;所属中心:" + val.centerName + "</span>"
+									+ "</div></a></div></div></div>";
+							//str = str + "<div class='"+styleName+"' id='bar"+val.channelId+"' onclick='findCountryByContinentId("+val.channelId+")'>"+val.channelName+"</div>";
+						});
+						$("#wlistdiv").html(str);
+						//me end
+                    // 如果没有数据
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                    }
+
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.weui_panel_bd').append(result);  
+                        /* var lazyloadImg = new LazyloadImg({
+                        el: '.weui-updown [data-img]', //匹配元素
+                        top: 50, //元素在顶部伸出长度触发加载机制
+                        right: 50, //元素在右边伸出长度触发加载机制
+                        bottom: 50, //元素在底部伸出长度触发加载机制
+                        left: 50, //元素在左边伸出长度触发加载机制
+                        qriginal: false, // true，自动将图片剪切成默认图片的宽高；false显示图片真实宽高
+                            load: function(el) {
+                                el.style.cssText += '-webkit-animation: fadeIn 01s ease 0.2s 1 both;animation: fadeIn 1s ease 0.2s 1 both;';
+                            },
+                            error: function(el) {
+
+                            }
+                        }); */
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    },1000);
+                },
+                error: function(xhr, type){
+                    
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        },
+        loadDownFn : function(me){//加载更多
+        var  userid = GetQueryString("userId");
+         page++;
+         pagenum++;
+         window.history.pushState(null, document.title, window.location.href);
+         var result = '';
+         
+            $.ajax({
+                type: 'GET',
+                async:false,
+                url:'../servlet/waitServlet?pagenum='+pagenum+'&userId='+userid,
+                dataType: 'json',
+                success: function(data){
+                if(data.errorview == "yes"){
+                	window.location.href="error.html";
+                }
+                $("#tipcount").html(data.tipcount);
+                $("#readcount").html(data.readcount);
+                var arrLen = data.wlist.length;
+                    if(arrLen > 0){
+                    	//me
+                       var str = "";
+						$.each(data.wlist,function(i,val){
+							var styleName="weui_navbar_item";
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							var wfid = "";
+							if(val.workFlowId != null && val.workFlowId == '8' || val.workFlowId == '7'){
+								wfid = "outlayInfo.html?inid="+val.instanceId;
+							}
+							if(val.workFlowId != null && val.workFlowId == '9'){
+								wfid = "loveInfo.html?inid="+val.instanceId;
+							}
+							str += "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"
+									+"<div class=\"ibox float-e-margins\">"
+									+ "<a href=\""+wfid+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">";
+									if(val.readStatus == 0){
+										str += "<div class=\"rot-lef\" ><img src=\"../img/reddot.png\" style=\"width: 30px;height: 30px;\"></div>";
+									}
+									
+									str += "<div class=\"rot-rig\" >"
+									+ "<h4>" + val.title + "</h4>"
+									+ "<div>"
+									+ "<span>&nbsp;&nbsp;申请时间:" + val.applyTime + "</span>"
+									+ "</div>"
+									+ "<div class=\"form-group\">"
+									+ "<span>&nbsp;&nbsp;所属中心:" + val.centerName + "</span>"
+									+ "</div></a></div></div></div>";
+							//str = str + "<div class='"+styleName+"' id='bar"+val.channelId+"' onclick='findCountryByContinentId("+val.channelId+")'>"+val.channelName+"</div>";
+						});
+						$("#wlistdiv").html(str);
+						//me end
+                    // 如果没有数据
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                    }
+
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.weui_panel_bd').append(result);  
+                        /* var lazyloadImg = new LazyloadImg({
+                        el: '.weui-updown [data-img]', //匹配元素
+                        top: 50, //元素在顶部伸出长度触发加载机制
+                        right: 50, //元素在右边伸出长度触发加载机制
+                        bottom: 50, //元素在底部伸出长度触发加载机制
+                        left: 50, //元素在左边伸出长度触发加载机制
+                        qriginal: false, // true，自动将图片剪切成默认图片的宽高；false显示图片真实宽高
+                            load: function(el) {
+                                el.style.cssText += '-webkit-animation: fadeIn 01s ease 0.2s 1 both;animation: fadeIn 1s ease 0.2s 1 both;';
+                            },
+                            error: function(el) {
+
+                            }
+                        }); */
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    },1000);
+                },
+                error: function(xhr, type){
+                    
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+    
+});
+function tabbtn(url){
+	window.location.href=url;
+}
+
+//获取网址参数值
+function GetQueryString(name){
+	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	var r = window.location.search.substr(1).match(reg);
+	if(r!=null)return unescape(r[2]); return null;
+}
+</script>
+    
+
+</body>
+
+</html>

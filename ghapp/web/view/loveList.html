@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+
+    <title>活动查询列表</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../css/ghMod_style.css" rel="stylesheet">
+    
+    <style type="text/css">
+        @media only screen  and (min-device-width : 736px)  and (max-device-width : 736px){
+            .nav-tabs > li > a{padding: 10px 19px;}
+        }
+        h4,h5{font-weight: 700;}
+    </style>
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="content_panel col-xs-12">
+                        
+                <div class="input-group">
+                    <input type="text" placeholder="请输入名称或台工会总字" class="input form-control" id="title">
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn btn-primary" id="searchbtn"> <i class="fa fa-search"></i> 搜索</button>
+                        </span>
+                </div>
+                <div class="clients-list">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">全部</a>
+                        </li>
+                        <li class=""><a data-toggle="tab" href="#tab-2">待处理</a>
+                        </li>
+                        <li class=""><a data-toggle="tab" href="#tab-3">审批中</a>
+                        </li>
+                        <li class=""><a data-toggle="tab" href="#tab-4">待报销</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active" style="height:auto;margin-bottom: 40px;">
+                            <div class="">
+                                <div class="" id="alldiv">
+                                    <!-- 内容start -->
+                                    
+                                    <!-- 内容end -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="">
+                                <div class="" id="waitdiv">
+                                    <!-- 内容start -->
+                                    
+                                    <!-- 内容end -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-3" class="tab-pane">
+                            <div class="">
+                                <div class="" id="doingdiv">
+                                    <!-- 内容start -->
+                                    
+                                    <!-- 内容end -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-4" class="tab-pane">
+                            <div class="">
+                                <div class="" id="bxdiv">
+                                    <!-- 内容start -->
+                                    
+                                    <!-- 内容end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+              
+            
+        </div>
+    </div>
+    
+    
+     <!-- 底部导航start -->
+    <div class="weui_tab tab-bottom" >
+        <div class="weui_tabbar ">
+            <a href="javascript:tabbtn('waitList.html');" class="weui_tabbar_item ">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-pencil-square-o"></i>
+                </div>
+                <p class="weui_tabbar_label">待办(<font color="red" id="readcount"></font>)</p>
+            </a>
+            <a href="javascript:tabbtn('tipsList.html');" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-bell-o"></i>
+                </div>
+                <p class="weui_tabbar_label">提醒(<font color="red" id="tipcount"></font>)</p>
+            </a>
+            <a href="javascript:tabbtn('outlayList.html');" class="weui_tabbar_item ">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-search"></i>
+                </div>
+                <p class="weui_tabbar_label">活动查询</p>
+            </a>
+            <a href="javascript:tabbtn('loveList.html');" class="weui_tabbar_item weui_bar_item_on">
+                <div class="weui_tabbar_icon">
+                    <i class="fa fa-heart-o"></i>
+                </div>
+                <p class="weui_tabbar_label">爱心工程</p>
+            </a>
+                           
+        </div>
+    </div>
+    <!-- 底部导航end -->
+
+    <!-- 自定义js -->
+    <script src="../js/content.js?v=1.0.0"></script>
+    <!-- 下拉加载 -->
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/updown.js"></script>
+  
+<script>
+$(function(){
+	var pagenum = -1;
+	//页数 
+    var page = 0;
+    // 每页展示10个
+    var size =10;
+ 	$.ajax({
+         type: 'GET',
+         url:'../servlet/loveQueryServlet?pagenum='+0,
+         dataType: 'json',
+         success: function(data){
+         	copycode(data);
+         },
+         error: function(xhr, type){
+             
+             // 即使加载出错，也得重置
+             me.resetload();
+         }
+     });
+    $('.content_panel').dropload({
+
+        scrollArea : window,
+        autoLoad : true,//自动加载
+        domDown : {//上拉
+            domClass   : 'dropload-down',
+            domRefresh : '<div class="dropload-refresh f15 "><i class="icon icon-20"></i>上拉加载更多</div>',
+            domLoad    : '<div class="dropload-load f15"><span class="weui-loading"></span></div>',
+            domNoData  : '<div class="dropload-noData">没有更多数据了</div>'
+        },
+        domUp : {//下拉
+            domClass   : 'dropload-up',
+            domRefresh : '<div class="dropload-refresh"><i class="icon icon-114"></i>上拉加载更多</div>',
+            domUpdate  : '<div class="dropload-load f15"><i class="icon icon-20"></i>释放更新...</div>',
+            domLoad    : '<div class="dropload-load f15"><span class="weui-loading"></span></div>'
+        },
+        loadUpFn : function(me){//刷新
+        	pagenum = 0;
+            $.ajax({
+                type: 'GET',
+                url: '../servlet/loveQueryServlet?pagenum='+pagenum,
+                dataType: 'json',
+                success: function(data){
+                	copycode(data);
+                },
+                error: function(xhr, type){
+                    
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        },
+        loadDownFn : function(me){//加载更多
+        	var title = $("#title").val();
+         page++;
+         pagenum++;
+         window.history.pushState(null, document.title, window.location.href);
+         var result = '';
+         
+            $.ajax({
+                type: 'GET',
+                url:'../servlet/loveQueryServlet?pagenum='+pagenum+'&title='+title,
+                dataType: 'json',
+                success: function(data){
+                	copycode(data);
+                },
+                error: function(xhr, type){
+                    
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+        }
+    });
+    // 焦点变化
+    $('.nav-tabs li').click(function () {
+        $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        $('.tab-content > div').eq($(this).index()).addClass('active');
+        $('.tab-content > div').eq($(this).index()).siblings().removeClass('active');
+    });
+    
+    $("#searchbtn").click(function (){
+    	var title = $("#title").val();
+    	 $.ajax({
+                type: 'GET',
+                url:'../servlet/loveQueryServlet?pagenum='+pagenum+'&title='+title,
+                dataType: 'json',
+                success: function(data){
+                	//me
+                       var allstr = "";
+						$.each(data.allList,function(i,val){
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							
+							allstr +=  "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"+
+									"<div class=\"ibox float-e-margins\">"+
+									"<a href=\"loveInfo.html?inid="+val.instanceId+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">"+
+									"<h4>"+val.title+"</h4>"+
+									"<div>"+
+									"<span>&nbsp;&nbsp;申请时间:"+val.applyTime+"</span>"+
+									"</div>"+
+									"<div class=\"form-group\">"+
+									"<span>&nbsp;&nbsp;所属中心:"+val.centerName+"</span>"+
+									"</div>"+
+									"</a></div>"+
+									"</div>";
+						});
+						$("#alldiv").html(allstr);
+						//me end
+                },
+                error: function(xhr, type){
+                    
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                }
+            });
+    });
+});
+function tabbtn(url){
+	window.location.href=url;
+}
+
+function copycode(data){
+	$("#tipcount").html(data.tipcount);
+	$("#readcount").html(data.readcount);
+                var arrLen = data.allList.length;
+                    if(arrLen > 0){
+                    	//me
+                       var allstr = "";
+						$.each(data.allList,function(i,val){
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							
+							allstr +=  "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"+
+									"<div class=\"ibox float-e-margins\">"+
+									"<a href=\"loveInfo.html?inid="+val.instanceId+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">"+
+									"<h4>"+val.title+"</h4>"+
+									"<div>"+
+									"<span>&nbsp;&nbsp;申请时间:"+val.applyTime+"</span>"+
+									"</div>"+
+									"<div class=\"form-group\">"+
+									"<span>&nbsp;&nbsp;所属中心:"+val.centerName+"</span>"+
+									"</div>"+
+									"</a></div>"+
+									"</div>";
+						});
+						$("#alldiv").html(allstr);
+						//me end
+						
+						//me2
+                       var waitstr = "";
+						$.each(data.waitList,function(i,val){
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							waitstr +=  "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"+
+									"<div class=\"ibox float-e-margins\">"+
+									"<a href=\"loveInfo.html?inid="+val.instanceId+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">"+
+									"<h4>"+val.title+"</h4>"+
+									"<div>"+
+									"<span>&nbsp;&nbsp;申请时间:"+val.applyTime+"</span>"+
+									"</div>"+
+									"<div class=\"form-group\">"+
+									"<span>&nbsp;&nbsp;所属中心:"+val.centerName+"</span>"+
+									"</div>"+
+									"</a></div>"+
+									"</div>";
+						});
+						$("#waitdiv").html(waitstr);
+						//me2 end
+					//me3
+                       var doingstr = "";
+						$.each(data.doingList,function(i,val){
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							doingstr +=  "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"+
+									"<div class=\"ibox float-e-margins\">"+
+									"<a href=\"loveInfo.html?inid="+val.instanceId+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">"+
+									"<h4>"+val.title+"</h4>"+
+									"<div>"+
+									"<span>&nbsp;&nbsp;申请时间:"+val.applyTime+"</span>"+
+									"</div>"+
+									"<div class=\"form-group\">"+
+									"<span>&nbsp;&nbsp;所属中心:"+val.centerName+"</span>"+
+									"</div>"+
+									"</a></div>"+
+									"</div>";
+						});
+						$("#doingdiv").html(doingstr);
+						//me3 end
+						
+						//me4
+                       var bxstr = "";
+						$.each(data.bxList,function(i,val){
+							if(i==0){
+								/*styleName="weui_navbar_item weui_bar_item_on";
+								findCountryByContinentId(val.channelId);*/
+							}
+							bxstr +=  "<div class=\"ibox-tit\" style=\"height: 5px;\"></div>"+
+									"<div class=\"ibox float-e-margins\">"+
+									"<a href=\"loveInfo.html?inid="+val.instanceId+"\" style=\"color: #676a6c;\"><div class=\"ibox-content\">"+
+									"<h4>"+val.title+"</h4>"+
+									"<div>"+
+									"<span>&nbsp;&nbsp;申请时间:"+val.applyTime+"</span>"+
+									"</div>"+
+									"<div class=\"form-group\">"+
+									"<span>&nbsp;&nbsp;所属中心:"+val.centerName+"</span>"+
+									"</div>"+
+									"</a></div>"+
+									"</div>";
+									
+						});
+						$("#bxdiv").html(bxstr);
+						//me4 end
+                    // 如果没有数据
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                    }
+
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.weui_panel_bd').append(result);  
+                        /* var lazyloadImg = new LazyloadImg({
+                        el: '.weui-updown [data-img]', //匹配元素
+                        top: 50, //元素在顶部伸出长度触发加载机制
+                        right: 50, //元素在右边伸出长度触发加载机制
+                        bottom: 50, //元素在底部伸出长度触发加载机制
+                        left: 50, //元素在左边伸出长度触发加载机制
+                        qriginal: false, // true，自动将图片剪切成默认图片的宽高；false显示图片真实宽高
+                            load: function(el) {
+                                el.style.cssText += '-webkit-animation: fadeIn 01s ease 0.2s 1 both;animation: fadeIn 1s ease 0.2s 1 both;';
+                            },
+                            error: function(el) {
+
+                            }
+                        }); */
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    },1000);
+}
+</script>
+
+</body>
+
+</html>

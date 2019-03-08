@@ -1,0 +1,58 @@
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+        padding-right: 0;
+        padding-left: 0;
+    }
+.ibox{margin-bottom: 0px; }
+.ibox-title{height: 35px;    padding: 10px 15px 3px 15px;}
+.ibox-title h5 {float: none;}
+.ibox-tit{padding:5px;background-color: #f6f8f8;border-bottom: 1px solid transparent;
+display: block;}
+
+.ibox-content{padding: 10px 10px; }
+.ibox-content .form-group:last-child{margin-bottom: 0;}
+.ibox-btm{margin-bottom: 10px;}
+h4 a, a:hover{color: #676a6c;}
+
+.nav-tabs > li > a{padding: 10px 15px;}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 0;}
+.clients-list .nav-tabs > li.active > a, .clients-list .nav-tabs > li.active > a:hover, .clients-list .nav-tabs > li.active > a:focus{border-bottom: 2px solid #7665bf;}
+
+.vertical-timeline-block{margin: 1em 0;}
+.vertical-timeline-icon{left: 7px;width: 25px;height: 25px;    border: 3px solid #fff;}
+.vertical-timeline-icon i{width: 20px;height: 20px; margin-left: -10px; margin-top: -8px;}
+.vertical-timeline-content{margin-left:40px;  padding: 0.5em;}
+#vertical-timeline{margin:0;}
+.vertical-container{width: 100%;}
+.form-group span b{padding: 0 5px;}
+.tit-center{text-align: center;}
+.indent-cen{text-indent: 25px;}
+
+.table{margin-bottom: 0;}
+.ui-table {border-collapse: collapse;width:100%;white-space: nowrap;}
+.ui-table th {border: 1px solid #ffffff;padding: 1px;text-align: center;}
+.ui-table td {border: 1px solid #ffffff;background-color: #eeeeee;padding: 3px;}
+div.x_auto_box {overflow-y: hidden;overflow-x: auto;}
+div.lock_box {float: left;}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{line-height: 2.42857;}
+
+.container{width: 90%;height:auto;margin: 0 auto;}
+.operate{position:fixed; top:0;left: 0; width:58%; height: 30px; padding: 0 5px;}
+.main{ width: 100%; height:1000px;margin-top:5px;padding-top: 10px;}
+
+.tit_tza{color: #676a6c; font-size: 14px;}
+.tit_tzh4{display: inline-block;line-height: 0.428571;padding-right: 3px;}
+.tit_data{text-align: right;}
+
+.weui_tab{position: relative;height: 100%;}
+.tab-bottom{bottom: 0;width: 100%;position: fixed;height:63px;}
+.weui_tab_bd {box-sizing: border-box;height: 100%;padding-bottom: 55px;overflow: auto;-webkit-overflow-scrolling: touch;}
+.weui_tabbar {display: -webkit-box;display: -webkit-flex;display: flex;position: absolute;z-index: 500;bottom: 0;width: 100%;background-color: #f7f7fa;}
+.weui_tabbar_item {display: block;-webkit-box-flex: 1;-webkit-flex: 1;flex: 1;padding: 7px 0 0;-webkit-tap-highlight-color: transparent;}
+.weui_tabbar_icon {margin: 0 auto;width: 24px;height: 24px;}
+.weui_tabbar_icon i {font-size: 24px;}
+.weui_tabbar > a:hover,.weui_tabbar > a:hover p {color: #09bb07;}
+.weui_tabbar_icon+.weui_tabbar_label {margin-top: 5px;}
+.weui_tabbar_label {text-align: center;color: #888;font-size: 12px;}
+.weui_bar_item_on,.weui_bar_item_on>p{color: #09bb07;}
+/*活动的请示样式*/
+.lab-font{font-weight: normal;}

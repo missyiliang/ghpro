@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+    <title>活动详情</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link href="../favicon.ico" rel="shortcut icon" > 
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+<style type="text/css">
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .ibox{margin-bottom: 0px; }
+    .ibox-title{height: 35px;    padding: 10px 15px 3px 15px;}
+    .ibox-title h5 {float: none;}
+    .ibox-content .form-group:last-child{margin-bottom: 0;}
+    /*进度条*/
+    .vertical-timeline-block{margin: 1em 0;}
+    .vertical-timeline-icon{left: 7px;width: 25px;height: 25px;    border: 3px solid #fff;}
+    .vertical-timeline-icon i{width: 20px;height: 20px; margin-left: -10px; margin-top: -8px;}
+    .vertical-timeline-content{margin-left:40px;  padding: 0.5em;}
+    #vertical-timeline{margin:0;}
+    .vertical-container{width: 100%;}
+
+    .form-group span b{padding: 0 5px;}
+    .tit-center{text-align: center;}
+    .indent-cen{text-indent: 25px;}
+
+    /*table*/
+    .table{margin-bottom: 0;}
+    .ui-table {
+        border-collapse: collapse;
+        width:100%;
+        white-space: nowrap;
+    }
+    .ui-table th {
+        border: 1px solid #ffffff;
+        padding: 1px;
+        text-align: center;
+    }
+    .ui-table td {
+        border: 1px solid #ffffff;
+        background-color: #eeeeee;
+        padding: 3px;
+    }
+    div.x_auto_box {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    div.lock_box {
+        float: left;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{line-height: 2.42857;}
+
+
+</style>
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="ibox float-e-margins">
+                    <!-- 活动的请示 -->
+                    <div class="ibox-content">
+                        <h4>关于技术管理中心举办羽毛球活动的请示</h4>
+                        <p>HD-0036-20181226</p>
+                        <div class="form-group">
+                            <label>技术管理中心</label>
+                            <span class="pull-right">2018-12-26  10:12:20</span> 
+                        </div>
+                        <div class="form-group">
+                            <label>李阳 (00000000）</label>
+                            <span class="pull-right">13076543432</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 审批进度 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-hourglass-half"></i>
+                        <h5>审批进度</h5>
+                    </div>
+                    <div class="ibox-content" style="padding-bottom: 25px;">
+                        <div id="vertical-timeline" class="vertical-container light-timeline">
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon green-bg">
+                                    <i class="fa fa-check"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <span class="vertical-date">等待财务审核</span>
+                                    <span class="pull-right">2018-12-26  13:21:40</span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon gray-bg">
+                                    <i class="fa fa-check"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <span class="vertical-date">中心工会主席提交</span>
+                                    <span class="pull-right">2018-12-26  13:21:18</span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon gray-bg">
+                                    <i class="fa fa-check"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <span class="vertical-date">经办人提交预算</span>
+                                    <span class="pull-right">2018-12-26  13:21:18</span>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon gray-bg">
+                                    <i class="fa fa-check"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <span class="vertical-date">台工会主席同意</span>
+                                    <span class="pull-right">2018-12-26  13:21:18</span>
+                                </div>
+                            </div>
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon gray-bg">
+                                    <i class="fa fa-check"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <span class="vertical-date">财务提交</span>
+                                    <span class="pull-right">2018-12-26  13:21:18</span>
+                                </div>
+                            </div>
+                            <div id="showjd" style="display:none; ">
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon gray-bg">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+
+                                    <div class="vertical-timeline-content">
+                                        <span class="vertical-date">财务提交</span>
+                                        <span class="pull-right">2018-12-26  13:21:18</span>
+                                    </div>
+                                </div>
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon gray-bg">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+
+                                    <div class="vertical-timeline-content">
+                                        <span class="vertical-date">财务提交</span>
+                                        <span class="pull-right">2018-12-26  13:21:18</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                       <a href="javascript:showjdVoid();" id="btnjd" class="pull-right btn btn-xs btn-white">查看更多</a>
+                            
+                    </div>
+                </div>
+                <!-- 活动基本信息 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>活动基本信息</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group">
+                            <label>活动时间:</label>
+                            <span>2018-12-26至2018-12-26</span>
+                        </div>
+                        <div class="form-group">
+                            <label>受众人数:</label>
+                            <span>70</span>
+                        </div>
+                        <div class="form-group">
+                            <label>活动项目:</label>
+                            <span>体育活动</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 经费类别 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>经费类别</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group radio i-checks">
+                            <label>事业编会费</label>
+                            <input type="radio" value="option1" name="option1">
+                        
+                            <label>台聘会费</label>
+                            <input type="radio" checked="" value="option2" name="option2">
+                        
+                            <label>专项额度</label>
+                            <input type="radio" checked="" value="option3" name="option3">
+                        </div>
+                    </div>
+                </div>
+                <!-- 支付方式 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>支付方式</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group radio i-checks">
+                            <label>汇款</label>
+                            <input type="radio" checked="" value="option4" name="a"> 
+                                    
+                            <label>支票</label>
+                            <input type="radio" value="option5" name="optionsRadios">
+                        
+                            <label>现金</label>
+                            <input type="radio" checked="" value="option6" name="optionsRadios2">
+                        </div>
+                    </div>
+                </div>
+                <!-- 涵盖 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>涵盖</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group">
+                            <span>请示<b>1</b>份</span>
+                        </div>
+                        <div class="form-group">
+                            <span>预算<b>0</b>份</span>
+                        </div>
+                        <div class="form-group">
+                            <span>汇款申请单<b>0</b>份</span>
+                        </div>
+                        <div class="form-group">
+                            <span>合同附件<b>0</b>份</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- 请示 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>请示</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <h4 class="tit-center" >关于技术管理中心举办羽毛球活动的请示</h4>
+                        <div class="form-group">
+                            <p class="indent-cen">为提高职工健康水平，凝心聚力，提振精神，以良好的精神投入工作，机关党委计划于2019年1月3日至4日举办职工会员羽毛球活动。预计需要申请使用会费32000元。</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- 预算 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>预算</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <div class=" form-group">
+                            <!-- table -->
+                            <div class="row" id="list"> 
+                               <div class="col-xs-4" > 
+                                <table class="table ui-table"> 
+                                 <tbody>
+                                  <tr> 
+                                   <td>序号</td>
+                                   <td>项目</td> 
+                                   
+                                  </tr> 
+                                  <tr> 
+                                   <td>1</td> 
+                                   <td>SX00001</td> 
+                                   <td></td> 
+                                  </tr> 
+                                  <tr> 
+                                   <td>2</td> 
+                                   <td>DHL000000</td> 
+                                   <td></td> 
+                                  </tr>
+
+                                  <!-- 合计行 -->
+                                  <tr>
+                                      <td>合计</td>
+                                      <td></td> 
+                                  </tr> 
+                                 </tbody>
+                                </table> 
+                               </div> 
+                               <!-- 右侧 --> 
+                               <div class="x_auto_box col-xs-8" id="showDiv"> 
+                                <input type="hidden" name="dto.position" value="1" />
+                                <input type="hidden" name="dto.position" value="1" />
+                                <input type="hidden" name="dto.position" value="1" />
+                                <input type="hidden" name="dto.position" value="1" />
+                                <table id="tableRight" class="table ui-table"> 
+                                 <tbody>
+                                  <tr> 
+                                   <td>数量</td> 
+                                   <td>物品单位</td> 
+                                   <td>单价</td> 
+                                   <td style="font-weight: bold;">金额</td> 
+                                   <td>事业编会员会费</td> 
+                                   <td>台聘会员会费</td> 
+                                   <td>专项额度</td> 
+                                   <td>结算方式</td> 
+                                   <td>去向</td>
+                                  </tr> 
+                                  <tr> 
+                                   <td>1</td> 
+                                   <td>1</td> 
+                                   <td>1</td> 
+                                   <td style="font-weight: bold;">1.00</td> 
+                                   <td>1.00</td> 
+                                   <td>0.00</td> 
+                                   <td>0.00</td> 
+                                   <td>现金</td> 
+                                   <td></td>
+                                  </tr>
+                                  <tr> 
+                                   <td>2</td> 
+                                   <td>2</td> 
+                                   <td>4</td> 
+                                   <td style="font-weight: bold;">5.00</td> 
+                                   <td>10.00</td> 
+                                   <td>0.00</td> 
+                                   <td>0.00</td> 
+                                   <td>汇款</td> 
+                                   <td>0014-20181214</td>
+                                  </tr> 
+
+                                  <!-- 合计行 -->
+                                  <tr> 
+                                   <td></td> 
+                                   <td></td> 
+                                   <td></td> 
+                                   <td style="font-weight: bold;">5.00</td> 
+                                   <td>10.00</td> 
+                                   <td>0.00</td> 
+                                   <td>0.00</td> 
+                                   <td></td> 
+                                   <td></td>
+                                  </tr> 
+                                 </tbody>
+                                </table> 
+                               </div> 
+                              </div>  
+                            <!-- table -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 汇款单 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>汇款单</h5>
+                        
+                    </div>
+                    <div class="ibox-content">
+                        <h4 class="tit-center" >中央电视台工会联合会汇款申请单</h4>
+                        <p class="tit-center">0012-20181227</p>
+                        <div class="form-group">
+                            <label>汇款方信息</label>
+                            <br/>
+                            <span>汇款部门：技术管理中心</span>
+                            <br/>
+                            <span>汇款金额：13000.00</span>
+                            <br/>
+                            <span>汇款用途：购买羽绒服</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>收款方信息</label>
+                            <br/>
+                            <span>收款方名称：XXXXXXXXX有限公司</span>
+                            <br/>
+                            <span>开户行名称：XXXXXXXXX支行</span>
+                            <br/>
+                            <span>收款方账号：6667898766555444</span>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content">
+                        <h4 class="tit-center" >中央电视台工会联合会汇款申请单</h4>
+                        <p class="tit-center">0012-20181227</p>
+                        <div class="form-group">
+                            <label>汇款方信息</label>
+                            <br/>
+                            <span>汇款部门：技术管理中心</span>
+                            <br/>
+                            <span>汇款金额：13000.00</span>
+                            <br/>
+                            <span>汇款用途：购买羽绒服</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>收款方信息</label>
+                            <br/>
+                            <span>收款方名称：XXXXXXXXX有限公司</span>
+                            <br/>
+                            <span>开户行名称：XXXXXXXXX支行</span>
+                            <br/>
+                            <span>收款方账号：6667898766555444</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 附件信息 -->
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <i class="fa fa-tag"></i>
+                        <h5>附件信息</h5>
+                    </div>
+                    <div class="ibox-content">
+                        
+                        <div class="form-group">
+                            <p><a href="">合同文件1.png</a></p>
+                            <p><a href="">合同文件2.png</a></p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- 全局js -->
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../js/content.js?v=1.0.0"></script> 
+
+    <!-- iCheck -->
+    <script src="../js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var deviceWidth=$(window).outerWidth();
+
+             if(deviceWidth>640){
+
+                 $("html").css("font-size","100px");            
+
+             }else{
+
+                 $("html").css("font-size",deviceWidth/640*100+'px');     
+
+             }
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+    <!-- table -->
+     <script type="text/javascript">
+         $(document).ready(function() {
+             var rightPart = $('div.x_auto_box tr');
+             var leftPart = $('div.lock_box tr');
+             for (var i = 0; i < rightPart.length; i++) {
+                     var rightHeight = rightPart.eq(i).find('td:first').height();
+                     var leftHeight = leftPart.eq(i).find('td:first').height();
+                     if(leftHeight > rightHeight){
+                         rightPart.eq(i).find('td:first').height(leftHeight+1);
+                     } else {
+                         leftPart.eq(i).find('td:first').height(rightHeight+1);
+                     }
+             }
+
+             // 判断是否现实按钮
+             var num = $(".vertical-timeline-block").length;
+                if (num>5) {
+                    $("#btnjd").css("display","block");
+                }
+         });
+
+         function showjdVoid(){
+            
+            $("#btnjd").css("display","none");
+    
+            $("#showjd").css("display","block");
+         }
+          </script> 
+    
+    
+
+</body>
+
+</html>
